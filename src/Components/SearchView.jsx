@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft , Loader } from "lucide-react";
+import { ChevronLeft, Loader } from "lucide-react";
 import RecipeCard from "./RecipeCard";
 
 const SearchView = ({ meal, loading }) => {
@@ -24,9 +24,19 @@ const SearchView = ({ meal, loading }) => {
           </div>
         )}
 
-        {!loading && meal.length > 0 &&  (
-          <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-            {meal.map((meal , index  ) => <RecipeCard key={index} meal={meal} />)}
+        {!loading && meal.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 justify-center">
+            {meal.map((meal, index) => (
+              <div key={index} className="w-full flex justify-center">
+                <RecipeCard meal={meal} />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!loading && meal.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-400 text-lg">No recipes found matching your query.</p>
           </div>
         )}
       </main>
